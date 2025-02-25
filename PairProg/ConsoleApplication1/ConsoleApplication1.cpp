@@ -61,9 +61,13 @@ using namespace std;
 	}
 
 	if (input == "edit") {
-		 for (int i = 0; i < gameCount; i++) {
-
-		}
+		cout << "What game would you like to edit?\n";
+		for (int i = 0; i < gameCount; i++) {
+			if (favGames == input) {
+				cout << "What would you like to name this game?\n";
+				favGames = input;
+			}
+		 }
 
 	if (input == "remove") {
 		// add code later
