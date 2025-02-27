@@ -67,6 +67,7 @@ int main() {
 			// adds user input to the array as an entry
 			getline(cin, input);
 			favGames[gameCount++] = input;
+			cout << "\tYou just added " << input << ".\n";
 		}
 		// edits an entry
 			// displays list of entries
