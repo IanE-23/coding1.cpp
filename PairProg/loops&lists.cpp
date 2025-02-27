@@ -10,10 +10,10 @@ int main() {
 	// an array is an ordered list of a single type of variable
 
 	//create an array of integers with a size of 10
-	
+
 	const int MAX_SIZE = 10;						// this variable can not be changed after
-													// we use ALL CAPS to show constant variable
-	
+	// we use ALL CAPS to show constant variable
+
 	int element = 0;								// this keeps track of where in the array we are
 
 	int scores[MAX_SIZE];							// this array has just created 10 spots for integers
@@ -40,7 +40,7 @@ int main() {
 		// use a while loop to run through all of the scores.
 		// the loop is done when the loop counter is equal to element
 	int counter = 0;
-	while (counter < element) {						// while counter is less thanelement, keep looping
+	while (counter < element) {						// while counter is less than element, keep looping
 		if (scores[counter] < 0) {
 			counter += 1;
 			continue;								// stop the code, go to the next loop
@@ -56,7 +56,7 @@ int main() {
 	// create an array of string variables. you MUST specify a size, we'll pick 20
 	string bestFriends[20];
 	int friendCount = 0;
-	
+
 	string input;
 	do {
 		cout << "We're making a list of best friends, who would you like to add?\n";
@@ -79,7 +79,7 @@ int main() {
 
 	} while (true);
 	cout << "Here is a list of your best friends.\n";
-	
+
 	// a for loop runs "for a certain amount of times"
 	// a for loop includes the counter, the test, and the increment action
 		// all on the same line
@@ -92,13 +92,13 @@ int main() {
 		cout << bestFriends[i] << "\n";
 	}
 
-	/* 
+	/*
 	* pseudocode for FaveGames assignment
-	* 
+	*
 	* Setup
 	*	int gameCount = 0;
 	* Start loop
-	* 
+	*
 	* 0. Greet Player and ask for input
 	* 1. Add game by getting player input
 	*	ask the player what name they want to add
@@ -120,7 +120,7 @@ int main() {
 	*	make sure empty strings are not shown
 	* 5. Quit
 	*	allow player to quit at their choosing
-	
+
 
 	string favGames[10];
 	int gameCount = 0;
@@ -141,7 +141,7 @@ int main() {
 			cout << "There is already 10 games.\n";
 			break;
 		}
-	
+
 	} while (true);
 	if (input == "show") {
 		cout << "Here is a list of your Top 10 Favorite Games.\n";
@@ -152,7 +152,7 @@ int main() {
 
 	if (input == "edit") {
 		// for (int i = 0; i < gameCount; i++) {
-			
+
 		}
 	}
 
