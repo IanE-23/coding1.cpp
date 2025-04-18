@@ -12,7 +12,7 @@ public:
     human(string, int, int);
     void SayHello();
     
-    void setHealth(int givenHealth) {
+    virtual void setHealth(int givenHealth) {
         if (debug = true) {
             cout << "The current health is " << health << ".\n";
             cout << "givenHealth is " << givenHealth << ".\n";
@@ -95,11 +95,11 @@ public:
         cout << " The Barbarian unleashes an inhuman yell, boosting all of his team's stats.\n";
     }
 
-    void doubleSwing(human& target) {
-        cout << "The barbarian siwngs both weapons at " << target.getName() << "!\n";
+    void doubleSwingDamage(human& target) {
+        cout <<"The barbarian siwngs both weapons at " << target.getName() << "!\n";
 
         int tempDamage = getDamage() * 2;
-        target.setHealth(-tempDamage);
+        target.setHealth(target.getHealth() - tempDamage);
     }
 
 };
@@ -108,10 +108,52 @@ public:
     // add a dropGold() function.
     // add a shopName variable.
 
+class shopkeep: public human {
+    //base HP, Attack, gold Amount
+    int gold = 20;
+    string shopName = "";
+    
+public:
+    void setShopName(string givenShopName) {
+        shopName = givenShopName;
+    }
+
+    void setHealth(int givenHealth) override {
+        if (givenHealth < 0) {
+            health = 0;
+        }
+        else if (givenHealth > 50) {
+            health = 50;
+        }
+        else {
+            health = givenHealth;
+        }
+
+        if (health <= 0) {
+            cout << "The owner of " << shopName << " has died. You cruel person.\n";
+            cout << "They dropped " << gold << " gold.\n";
+            gold = 0;
+        }
+    }
+
+    string getShopName() {
+        return shopName;
+    }
+
+    shopkeep(string givenName = "", string givenShopName = "shop", int givenHealth = 10, int givenDamage = 4) {
+        setName(givenName);
+        setShopName(givenShopName);
+        setHealth(givenHealth);
+        setDamage(givenDamage);
+    }
+};
+
 int main()
 {
     barbarian bane("Bane", 22, 4);
     bane.SayHello();
+
+    shopkeep dave("Todd", "Dave's Wares", 1, 1);
 
     human steve("Steve", 25, 5);
     steve.SayHello();
@@ -133,7 +175,11 @@ int main()
     cout << steve.getName() << " now has " << steve.getHealth() << " points of health remaining!\n";
 
     cout << bane.getName() << " attacks " << huamn.getName() << " with a double swing!\n";
-    bane.doubleSwing(huamn);
+    bane.doubleSwingDamage(huamn);
 
     cout << huamn.getName() << " now has " << huamn.getHealth() << " points of health remaining!\n";
+
+    cout << "Wait is that " << dave.getName() << " who works at " << dave.getShopName() << "? What is he doing here?\n\n";
+    cout << ian.getName() << " attacks " << dave.getName() << " who appears to be lost!\n";
+    dave.setHealth(dave.getHealth() - ian.getDamage());
 }
